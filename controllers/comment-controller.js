@@ -89,3 +89,26 @@ export const commentReply = async (req, res) => {
   }
 };
 
+export const getReplies = async (req, res) => {
+  try {
+    const { commentId } = req.params;
+
+    const replies = await Comment.find({ parentComment: commentId })
+      .populate("author", "username")
+      .sort({ createdAt: 1 });
+
+    return res.status(200).json({
+      success: true,
+      message: "Fetched replies successfully",
+      data: replies,
+    });
+  } catch (e) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: e.message,
+    });
+  }
+};
+
+
