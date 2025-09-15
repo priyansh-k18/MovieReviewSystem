@@ -12,7 +12,7 @@ const commentSchema = new mongoose.Schema(
       min: 1,
       max: 10,
       required: function () {
-        return !this.parentComment; 
+        return !this.parentComment; //iska mtlb hai ki parent comment null hua toh woh function true return krega
       },
     },
     author: {
@@ -24,7 +24,7 @@ const commentSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Movie",
       required: function () {
-        return !this.parentComment;
+        return !this.parentComment; //mtlb ydi h movie pr comment h toh required hoga hi
       },
     },
     parentComment: {

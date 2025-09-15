@@ -5,6 +5,7 @@ import { connectionToDb } from './database/db.js';
 const app = express();
 import moviesRouter from './routes/movie-routes.js';
 import authRouter from './routes/auth-routes.js';
+import commentRouter from './routes/comment-routes.js';
 
 
 
@@ -18,6 +19,7 @@ app.use(express.json());
 //routes
 app.use('/api/movies', moviesRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/movies/:movieId/comments', commentRouter);
 
 
 //live server
