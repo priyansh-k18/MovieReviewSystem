@@ -4,6 +4,7 @@ import express from 'express';
 import { connectionToDb } from './database/db.js';
 const app = express();
 import moviesRouter from './routes/movie-routes.js';
+import authRouter from './routes/auth-routes.js';
 
 
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //routes
 app.use('/api/movies', moviesRouter);
+app.use('/api/auth', authRouter);
 
 
 //live server
